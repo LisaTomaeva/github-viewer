@@ -1,5 +1,5 @@
-To install the packeges:
+To install the packages:
 - npm install
 
 To run the project use: 
-- nps start
+- npm start
