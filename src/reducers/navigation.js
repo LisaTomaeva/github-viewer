@@ -1,6 +1,10 @@
-import { GET_TREE } from "../actions/NavActions.js"
+import { GET_TREE, GET_FOLDER, GET_FILE } from "../actions/NavActions.js"
 
-const initialState = {}
+const initialState = {
+    tree: [],
+    currentFolder: [],
+    currentFile: ''
+}
 
 export default function Reducer(state = initialState, action) {
     switch (action.type) {
@@ -8,6 +12,18 @@ export default function Reducer(state = initialState, action) {
         return {
           ...state,
           tree: action.payload
+        }
+      }
+      case GET_FOLDER: {
+        return {
+          ...state,
+          currentFolder: action.payload
+        }
+      }
+      case GET_FILE: {
+        return {
+          ...state,
+          currentFile: action.payload
         }
       }
       default:

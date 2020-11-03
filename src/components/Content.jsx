@@ -1,27 +1,28 @@
 import React, { Component, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch, useParams, Link, useRouteMatch } from 'react-router-dom';
 import { getTree } from '../actions/NavActions.js';
 
 
 export function Content(props)  {
 
-  const a = useRouteMatch()
-
+  const match = useRouteMatch();
 
   useEffect(() => {
-    props.getTree(a.params.owner, a.params.repo)    
+    props.getTree(match.params.owner, match.params.repo)    
   });
 
-      return (
-        <div className="Content">
-          content
-        </div>
-      )
-      }
-      const mapDispatchToProps = {
-        getTree,
-      }
+  const text = useSelector((state) => { 
+    return state.reducers.masterBranch.currentFile
+  })
+  return (
+    <div className="Content">
+      {text}
+    </div>
+  )}
+    const mapDispatchToProps = {
+      getTree,
+    }
       
     export default connect(null, mapDispatchToProps)(Content);
   
