@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch, useParams, Link, useRouteMatch } from 'react-router-dom';
 import TreeMenu from 'react-simple-tree-menu';
 import { connect, useSelector } from 'react-redux';
@@ -8,11 +8,7 @@ export function Menu(props) {
       let { owner, repo } = useParams();
       
       const tree = useSelector((state) => { 
-        return (state.reducers.masterBranch.tree.map(item => ({
-          key: item.sha,
-          label: item.path,
-          type: item.type
-       }))
+        return (state.reducers.masterBranch.tree
       )})
 
       function openItem(item) {
@@ -26,8 +22,7 @@ export function Menu(props) {
 
       return (
         <div className="Nav">
-          <h1>{`${owner} / ${repo}`}</h1>
-          <Link to={`/${owner}/${repo}`}>Content</Link>
+          <h1>{`${owner}`}</h1>
           <TreeMenu data={tree} onClickItem={openItem}/>
         </div>
 
