@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect, useSelector } from 'react-redux';
-import { BrowserRouter as useRouteMatch } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 import { getTree } from '../actions/NavActions.js';
 
 
